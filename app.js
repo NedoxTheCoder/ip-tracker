@@ -62,12 +62,19 @@ searchBtn.addEventListener("click",function(e){
         .then(data => {
             useData(data);
         })
-    }else{
-        alert("Not valid try again!")
-    }
+    }else{Swal.fire(
+      'Not valid!',
+      'Please enter a valid IP Address!',
+      'warning'
+    )}
 })
 
-
+input.addEventListener("keydown",function(e){
+  if (e.key == "Enter"){
+    e.preventDefault();
+    searchBtn.click();
+  }
+})
 var map = L.map('map').setView([40.52, 34.34], 2);
 
     var tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
